@@ -6,12 +6,14 @@ import EmailList from "./components/EmailList";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import "./App.css";
+import SendMail from "./components/sendMail";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="app">
         <Header />
+        <SendMail />
         <div className="app_body">
           <Sidebar />
           <Switch>

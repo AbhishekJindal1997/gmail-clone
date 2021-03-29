@@ -11,6 +11,8 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { useHistory } from "react-router-dom";
+import LabelImportantIcon from "@material-ui/icons/LabelImportant";
+
 import "./styles/Mail.css";
 
 const Mail = () => {
@@ -54,7 +56,23 @@ const Mail = () => {
         </div>
       </div>
 
-      <h1>Whatssup</h1>
+      <div className="mail_body">
+        <div className="mail_bodyHeader">
+          <h1>Whatssup</h1>
+          <LabelImportantIcon className="mail_important" />
+          <p>Title</p>
+          <p className="mail_time">10 pm </p>
+        </div>
+        <p className="mail_message">
+          This is a message hey just tes5ibg the overflow text wrap will it woek
+          lets see how does this goes i am really excited for this was wao-iting
+          for a long time v This is a message hey just tes5ibg the overflow text
+          wrap will it woek lets see how does this goes i am really excited for
+          this was wao-iting for a long time This is a message hey just tes5ibg
+          the overflow text wrap will it woek lets see how does this goes i am
+          really excited for this was wao-iting for a long time
+        </p>
+      </div>
     </div>
   );
 };
