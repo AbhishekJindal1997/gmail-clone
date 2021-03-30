@@ -1,9 +1,16 @@
 .app {
   height: 100vh;
   overflow: hidden;
+  scroll-behavior: smooth;
 }
 
 .app_body {
   display: flex;
   height: 100vh;
+}
+
+@media only screen and (max-width: 600px) {
+  /* .app {
+    background-color: black;
+  } */
 }

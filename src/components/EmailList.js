@@ -10,12 +10,19 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import InboxIcon from "@material-ui/icons/Inbox";
 import PeopleIcon from "@material-ui/icons/People";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
+import { Button } from "@material-ui/core";
+import { db } from "../firebase";
+import { useDispatch } from "react-redux";
+import { openSendMessage } from "../features/mailSlice";
 
 import "./styles/EmailList.css";
-import { db } from "../firebase";
 
 const MailList = () => {
   const [emails, setEmails] = useState([]);
+  const dispatch = useDispatch();
+  const handleCompose = () => {
+    dispatch(openSendMessage());
+  };
 
   useEffect(() => {
     db.collection("emails")
@@ -76,6 +83,22 @@ const MailList = () => {
             })}
           />
         ))}
+      </div>
+
+      <div className="compose_mobile_button">
+        <Button
+          startIcon={
+            <img
+              src="http://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png"
+              className="sidebar_compose_icon"
+              alt="compose button icon"
+            />
+          }
+          className="sidebar_compose"
+          onClick={handleCompose}
+        >
+          Compose
+        </Button>
       </div>
     </div>
   );

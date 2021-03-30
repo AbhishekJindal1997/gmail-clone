@@ -13,6 +13,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { auth } from "./firebase";
 
 import "./Header.css";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const history = useHistory();
   const user = useSelector(selectUser);
   const signOut = () => {
     auth.signOut().then(() => {
@@ -41,6 +43,7 @@ const Header = () => {
         <img
           src="https://images.macrumors.com/t/tOeSavAWwmT_Nsa7e67NCK_J-FA=/400x0/filters:quality(90)/article-new/2020/10/newgmaillogo.0.jpg?lossy"
           alt="Gmail Logo"
+          onClick={() => history.push("/")}
         />
       </div>
       <div className="header_middle">
@@ -51,15 +54,17 @@ const Header = () => {
         </IconButton>
       </div>
       <div className="header_right">
-        <IconButton>
-          <SettingsIcon />
-        </IconButton>
-        <IconButton>
-          <HelpIcon />
-        </IconButton>
-        <IconButton>
-          <AppsIcon />
-        </IconButton>
+        <span className="header_display_mobile">
+          <IconButton>
+            <SettingsIcon />
+          </IconButton>
+          <IconButton>
+            <HelpIcon />
+          </IconButton>
+          <IconButton>
+            <AppsIcon />
+          </IconButton>
+        </span>
         <IconButton>
           <Avatar src={user?.photoUrl} onClick={signOut} />
         </IconButton>

@@ -63,3 +63,32 @@
   font-size: 12px;
   color: gray;
 }
+
+@media only screen and (max-width: 600px) {
+  .mail_toolsLeft:nth-of-type(5n) {
+    display: none;
+  }
+
+  .mail_body {
+    margin: 10px 10px;
+    padding: 5px 0px 0px 5px;
+  }
+
+  .mail_time {
+    position: absolute;
+    top: 0;
+    margin-right: 5px;
+  }
+
+  .mail_message {
+    margin-top: 10px;
+  }
+
+  .mobile_display_hidden {
+    display: none;
+  }
+
+  .mail_tools {
+    padding-left: 0px;
+  }
+}

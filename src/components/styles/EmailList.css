@@ -25,7 +25,11 @@
 }
 
 .emailList_list {
-  padding-bottom: 10%;
+  margin-bottom: 20px;
+}
+
+.compose_mobile_button {
+  display: none;
 }
 
 @media only screen and (max-width: 600px) {
@@ -38,5 +42,18 @@
 
   .emailList_settings {
     display: none;
+  }
+
+  .compose_mobile_button {
+    display: block;
+    bottom: 0;
+    right: 0;
+    margin-right: 10px;
+    position: absolute;
+  }
+
+  .compose_mobile_button Button {
+    background-color: brown;
+    color: whitesmoke;
   }
 }

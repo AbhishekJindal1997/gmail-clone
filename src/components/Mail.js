@@ -37,18 +37,20 @@ const Mail = () => {
           <IconButton>
             <MarkunreadIcon />
           </IconButton>
-          <IconButton>
-            <AccessTimeTwoToneIcon />
-          </IconButton>
-          <IconButton>
-            <PlaylistAddCheckTwoToneIcon />
-          </IconButton>
-          <IconButton>
-            <LabelIcon />
-          </IconButton>
-          <IconButton>
-            <MoreVertIcon />
-          </IconButton>
+          <span className="mobile_display_hidden">
+            <IconButton>
+              <AccessTimeTwoToneIcon />
+            </IconButton>
+            <IconButton>
+              <PlaylistAddCheckTwoToneIcon />
+            </IconButton>
+            <IconButton>
+              <LabelIcon />
+            </IconButton>
+            <IconButton>
+              <MoreVertIcon />
+            </IconButton>
+          </span>
         </div>
         <div className="mail_toolsRight">
           <IconButton>

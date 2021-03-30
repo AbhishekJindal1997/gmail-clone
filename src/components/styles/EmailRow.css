@@ -7,7 +7,7 @@
   z-index: 999;
   color: #202124;
   padding-right: 10px;
-  font-size: 14px;
+  font-size: 12px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -55,6 +55,36 @@
 }
 
 .emailRow_title {
-  max-width: 150px;
+  max-width: 100px;
   margin-left: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .emailRow_options {
+    display: none;
+  }
+
+  .emailRow {
+    display: block;
+    padding: 5px;
+    align-items: center;
+  }
+
+  .emailRow_title {
+    display: block;
+    margin-top: 3px;
+    margin-bottom: 2px;
+  }
+
+  .emailRow_message {
+    margin-left: 5px;
+  }
+
+  .emailRow_time {
+    position: relative;
+    margin-top: -7%;
+    margin-left: 83%;
+    padding-right: 0px;
+    margin-right: 0px;
+  }
 }

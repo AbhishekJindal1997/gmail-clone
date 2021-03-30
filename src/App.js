@@ -46,6 +46,9 @@ function App() {
               <Route path="/mail">
                 <Mail />
               </Route>
+              <Route path="/compose">
+                <SendMail />
+              </Route>
               <Route path="/">
                 <EmailList />
               </Route>
