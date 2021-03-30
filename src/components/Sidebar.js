@@ -11,12 +11,19 @@ import NoteIcon from "@material-ui/icons/Note";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import VideoCallIcon from "@material-ui/icons/VideoCall";
 import KeyboardIcon from "@material-ui/icons/Keyboard";
-
 import { useHistory } from "react-router-dom";
+import { openSendMessage } from "../features/mailSlice";
+import { useDispatch } from "react-redux";
+
 import "./styles/Sidebar.css";
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
+
+  const handleCompose = () => {
+    dispatch(openSendMessage());
+  };
   return (
     <div className="sidebar">
       <Button
@@ -28,6 +35,7 @@ const Sidebar = () => {
           />
         }
         className="sidebar_compose"
+        onClick={handleCompose}
       >
         Compose
       </Button>

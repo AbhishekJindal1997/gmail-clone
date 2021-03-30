@@ -1,12 +1,13 @@
 .emailRow {
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 40px;
   border-bottom: 3px solid whitesmoke;
   cursor: pointer;
   z-index: 999;
   color: #202124;
   padding-right: 10px;
+  font-size: 14px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -19,11 +20,18 @@
   display: flex;
 }
 
+.emailRow_options .MuiIconButton-root {
+  color: rgb(199, 194, 194);
+  font-size: small !important;
+  margin: 0px 1px !important;
+  padding: 8px;
+}
+
 .emailRow_message {
   display: flex;
   flex: 1;
   align-items: center;
-  margin-left: 100px;
+  margin-left: 200px;
 }
 
 .emailRow_message > h4 {
@@ -44,4 +52,9 @@
   color: gray;
   padding-top: 10px;
   font-weight: 600;
+}
+
+.emailRow_title {
+  max-width: 150px;
+  margin-left: 10px;
 }

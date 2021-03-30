@@ -1,9 +1,9 @@
 .sidebarOption {
   display: flex;
-  width: 270px;
+  width: 220px;
   align-items: center;
-  height: 40px;
-  padding: 0 10px;
+  height: 35px;
+  padding: 0 7px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   cursor: pointer;
@@ -22,7 +22,7 @@
 .sidebarOption > h3 {
   flex: 1;
   margin-left: 15px;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
 }
 

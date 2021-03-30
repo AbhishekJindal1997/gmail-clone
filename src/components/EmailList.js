@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import EmailRow from "./EmailRow";
 import Section from "./Section";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
@@ -12,8 +12,24 @@ import PeopleIcon from "@material-ui/icons/People";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 
 import "./styles/EmailList.css";
+import { db } from "../firebase";
 
 const MailList = () => {
+  const [emails, setEmails] = useState([]);
+
+  useEffect(() => {
+    db.collection("emails")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setEmails(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
+
   return (
     <div className="emailList">
       {/* Email List top bar */}
@@ -47,163 +63,19 @@ const MailList = () => {
       </div>
 
       <div className="emailList_list">
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a testh cgdvcdtcsfrsd"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a testh cgdvcdtcsfrsd"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a testh cgdvcdtcsfrsd"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a testh cgdvcdtcsfrsd"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a testh cgdvcdtcsfrsd"
-          time="10:00 pm"
-        />
-        <EmailRow
-          title="twich"
-          subject="Hey Just some dummy data"
-          description="This is a test"
-          time="10:00 pm"
-        />
+        {emails.map(({ id, data: { to, subject, message, timestamp } }) => (
+          <EmailRow
+            id={id}
+            key={id}
+            title={to}
+            subject={subject}
+            description={message}
+            time={new Date(timestamp?.seconds * 1000).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          />
+        ))}
       </div>
     </div>
   );

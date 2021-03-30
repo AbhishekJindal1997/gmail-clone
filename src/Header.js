@@ -6,11 +6,32 @@ import { IconButton } from "@material-ui/core";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import SettingsIcon from "@material-ui/icons/Settings";
 import HelpIcon from "@material-ui/icons/Help";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import { logout, selectUser } from "./features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { makeStyles } from "@material-ui/core/styles";
+import Avatar from "@material-ui/core/Avatar";
+import { auth } from "./firebase";
 
 import "./Header.css";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+}));
+
 const Header = () => {
+  const dispatch = useDispatch();
+  const classes = useStyles();
+  const user = useSelector(selectUser);
+  const signOut = () => {
+    auth.signOut().then(() => {
+      dispatch(logout());
+    });
+  };
   return (
     <div className="header">
       <div className="header_left">
@@ -40,7 +61,7 @@ const Header = () => {
           <AppsIcon />
         </IconButton>
         <IconButton>
-          <AccountCircleIcon />
+          <Avatar src={user?.photoUrl} onClick={signOut} />
         </IconButton>
       </div>
     </div>

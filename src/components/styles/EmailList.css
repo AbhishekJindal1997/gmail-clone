@@ -12,7 +12,6 @@
   border-bottom: 3px solid #e5e5e5;
   background-color: white;
   padding-right: 10px;
-  padding-top: 10px;
   padding-left: 20px;
 }
 
@@ -23,6 +22,10 @@
   background-color: white;
   z-index: 999;
   position: sticky;
+}
+
+.emailList_list {
+  padding-bottom: 10%;
 }
 
 @media only screen and (max-width: 600px) {
